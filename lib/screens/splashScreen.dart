@@ -3,6 +3,8 @@ import 'dart:async';
 
 import 'package:ssp_prom/screens/authScreen.dart';
 
+import '../customs/colors.dart';
+
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
 
@@ -24,6 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: mainBackGroundColor,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
