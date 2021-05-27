@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ssp_prom/customs/colors.dart';
-import 'package:ssp_prom/screens/authScreen.dart';
+
+import 'package:ssp_prom/screens/splashScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,11 +8,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: Scaffold(
-        body: AuthScreen(),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        home: SplashScreen());
   }
 }

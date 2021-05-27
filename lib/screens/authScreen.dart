@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ssp_prom/customs/colors.dart';
-import 'package:ssp_prom/customs/strings.dart';
 
 class AuthScreen extends StatefulWidget {
   AuthScreen({Key key}) : super(key: key);
