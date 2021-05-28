@@ -19,7 +19,6 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.only(top: 0, right: 17, bottom: 0, left: 17),
-          
           child: Column(
             children: [
               SizedBox(height: 80),
@@ -64,35 +63,52 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
                 ),
               ),
               SizedBox(height: 48),
-              buildContainer("assets/images/sim_card.png", simCardSellingText, Colors.white, green1),
-              SizedBox(height: 24,),
-              buildContainer("assets/images/exchange_logo.png", changeTariffText, Colors.black, Colors.white),
-              SizedBox(height: 24,),
-              buildContainer("assets/images/report.png", reportText, Colors.black, Colors.white),
-              SizedBox(height: 24,),
-              buildContainer("assets/images/reference_info.png", referenceInfoText, Colors.black, Colors.white)
+              buildContainer("assets/images/sim_card.png", simCardSellingText,
+                  Colors.white, green1),
+              SizedBox(
+                height: 24,
+              ),
+              buildContainer("assets/images/change.png", changeTariffText,
+                  Colors.black, Colors.white),
+              SizedBox(
+                height: 24,
+              ),
+              buildContainer("assets/images/report.png", reportText,
+                  Colors.black, Colors.white),
+              SizedBox(
+                height: 24,
+              ),
+              buildContainer("assets/images/reference_info.png",
+                  referenceInfoText, Colors.black, Colors.white),
             ],
           ),
         ),
       ),
     );
   }
+
   Widget buildContainer(
-    String image, String title, Color textColor, Color containerColor) {
-  return Container(
-    height: 78,
-    decoration: BoxDecoration(
-      color: containerColor,
-      borderRadius: BorderRadius.circular(16)
-    ),
-    child: Row(
-      children: [
-        
-        Image.asset(image,width: 78,height: 78,),
-        SizedBox(width: 6,),
-        Text(title,style: TextStyle(color: textColor,fontSize: 17),)
-      ],
-    ),
-  );
-}
+      String image, String title, Color textColor, Color containerColor) {
+    return Container(
+      height: 78,
+      decoration: BoxDecoration(
+          color: containerColor, borderRadius: BorderRadius.circular(16)),
+      child: Row(
+        children: [
+          Image.asset(
+            image,
+            width: 78,
+            height: 78,
+          ),
+          SizedBox(
+            width: 6,
+          ),
+          Text(
+            title,
+            style: TextStyle(color: textColor, fontSize: 17),
+          )
+        ],
+      ),
+    );
+  }
 }
