@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssp_prom/customs/colors.dart';
+import 'package:ssp_prom/customs/strings.dart';
+import 'package:ssp_prom/screens/bottomNavScreens/bottomNavBar.dart';
 
 class AuthScreen extends StatefulWidget {
   AuthScreen({Key key}) : super(key: key);
@@ -76,6 +78,7 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               SizedBox(height: 48),
               InkWell(
+                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavBar()));},
                 child: Container(
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
@@ -84,7 +87,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    "Войти",
+                    enter,
                     style: TextStyle(color: Colors.white, fontSize: 22),
                   ),
                 ),
@@ -99,13 +102,13 @@ class _AuthScreenState extends State<AuthScreen> {
                   children: [
                     InkWell(
                       child: Text(
-                        "Русский",
+                        russianLang,
                         style: TextStyle(fontSize: 16, color: Colors.green),
                       ),
                     ),
                     InkWell(
                       child: Text(
-                        "Кыргызча",
+                        kyrgyzLang,
                         style: TextStyle(fontSize: 16, color: Colors.grey),
                       ),
                     )
