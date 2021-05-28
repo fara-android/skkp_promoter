@@ -14,15 +14,16 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.only(top: 0, right: 28, left: 28, bottom: 0),
           color: mainBackGroundColor,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                height: 123,
+                height: 124,
               ),
               Row(
                 children: [
@@ -49,11 +50,21 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
               SizedBox(
-                height: 69.08,
+                height: 0,
               ),
               TextField(
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: promoGreenMain),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(10)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(10)),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius:
                         const BorderRadius.all(const Radius.circular(10)),
@@ -62,13 +73,21 @@ class _AuthScreenState extends State<AuthScreen> {
                   hintStyle: TextStyle(fontSize: 16),
                 ),
               ),
-              SizedBox(
-                height: 22,
-              ),
               TextField(
-                keyboardType: TextInputType.phone,
+                obscureText: true,
                 decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: promoGreenMain),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(10)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(10)),
+                  ),
                   border: OutlineInputBorder(
+                     borderSide: BorderSide(color: promoGreenMain),
                     borderRadius:
                         const BorderRadius.all(const Radius.circular(10)),
                   ),
@@ -76,9 +95,12 @@ class _AuthScreenState extends State<AuthScreen> {
                   hintStyle: TextStyle(fontSize: 16),
                 ),
               ),
-              SizedBox(height: 48),
+
               InkWell(
-                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavBar()));},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BottomNavBar()));
+                },
                 child: Container(
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
@@ -92,7 +114,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 48),
+              SizedBox(height: 0),
               Container(
                 padding: EdgeInsets.only(left: 56, right: 56),
                 alignment: Alignment.center,
@@ -115,6 +137,33 @@ class _AuthScreenState extends State<AuthScreen> {
                   ],
                 ),
               ),
+              SizedBox(height: 8),
+              Container(
+                height: 0.1,
+                color: Colors.grey,
+                padding: EdgeInsets.only(right: 36, left: 36),
+              ),
+              Container(
+                padding: EdgeInsets.only(right: 36, left: 36),
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width,
+                child: RichText(
+                  text: TextSpan(
+                    text: ruleText1,
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: ruleText2,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 24)
             ],
           ),
         ),
