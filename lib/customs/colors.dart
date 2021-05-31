@@ -9,6 +9,6 @@ Color promoGreenMain = Color(0xff59BA4A);
 Color promoDarkGreen = Color(0xff349025);
 Color promoTextBlack = Color(0xff313131);
 Color promoTextGray = Color(0xff9CA0A5);
-Color mainBackGroundColor = Color(0xffE5E5E5);
+Color mainBackGroundColor = Colors.grey[200];
 
 // for git merge
