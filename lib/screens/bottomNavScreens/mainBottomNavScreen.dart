@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ssp_prom/customs/colors.dart';
 import 'package:ssp_prom/customs/strings.dart';
+import 'package:ssp_prom/screens/simSellScreens/findNumScreen.dart';
 
 class MainBottomNavScreen extends StatefulWidget {
   MainBottomNavScreen({Key key}) : super(key: key);
@@ -47,12 +48,12 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
-                        ), //поменять на res(appName)!!!
+                        ),
                       ],
                     ),
                     Container(
                       child: Text(
-                        "ПРОФИЛЬ", //  Скорее всего придеться ставить имендж с фигмы
+                        "ПРОФИЛЬ",
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
@@ -63,8 +64,14 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
                 ),
               ),
               SizedBox(height: 48),
-              buildContainer("assets/images/sim_card.png", simCardSellingText,
-                  Colors.white, green1),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FindNumScreen()));
+                },
+                child: buildContainer("assets/images/sim_card.png",
+                    simCardSellingText, Colors.white, green1),
+              ),
               SizedBox(
                 height: 24,
               ),
