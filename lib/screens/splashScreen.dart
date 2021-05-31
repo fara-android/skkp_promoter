@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
 import 'package:ssp_prom/screens/authScreen.dart';
+import 'package:ssp_prom/screens/bottomNavScreens/bottomNavBar.dart';
 
 import '../customs/colors.dart';
 
@@ -13,14 +15,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+    
+    
   @override
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => AuthScreen()));
-    });
+    openApp();
   }
 
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         color: Colors.grey.withOpacity(0.4),
                         spreadRadius: 0,
                         blurRadius: 1,
-                        offset: Offset(5, 7), // changes position of shadow
+                        offset: Offset(5, 7), 
                       ),
                     ],
                   ),
@@ -62,5 +63,23 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
           )),
     );
+  }
+  Future openApp()async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    Future.delayed(Duration(seconds: 2), () {
+       print("object2");
+      
+        print(pref.containsKey("login"));
+        if(pref.containsKey("login")){
+          
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> BottomNavBar()));
+        }
+        else{
+          Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => AuthScreen()));
+        }
+      
+      
+    });
   }
 }

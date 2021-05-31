@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ssp_prom/customs/colors.dart';
 import 'package:ssp_prom/customs/strings.dart';
 import 'package:ssp_prom/screens/bottomNavScreens/bottomNavBar.dart';
@@ -11,6 +13,8 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  TextEditingController emailContr = TextEditingController();
+  TextEditingController passContr = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,11 +54,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
               SizedBox(
-                height: 0,
+                height: 60,
               ),
-              TextField(
+              TextFormField(
+                controller: emailContr,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
+                  helperMaxLines: 1,
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: promoGreenMain),
                     borderRadius:
@@ -73,7 +79,11 @@ class _AuthScreenState extends State<AuthScreen> {
                   hintStyle: TextStyle(fontSize: 16),
                 ),
               ),
-              TextField(
+              TextFormField(
+                controller: passContr,
+                // onChanged: (p) {
+                //   passWord = p;
+                // },
                 obscureText: true,
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -87,7 +97,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         const BorderRadius.all(const Radius.circular(10)),
                   ),
                   border: OutlineInputBorder(
-                     borderSide: BorderSide(color: promoGreenMain),
+                    borderSide: BorderSide(color: promoGreenMain),
                     borderRadius:
                         const BorderRadius.all(const Radius.circular(10)),
                   ),
@@ -95,9 +105,12 @@ class _AuthScreenState extends State<AuthScreen> {
                   hintStyle: TextStyle(fontSize: 16),
                 ),
               ),
-
               InkWell(
-                onTap: () {
+                onTap: () async {
+                  SharedPreferences preferences =
+                      await SharedPreferences.getInstance();
+                  await preferences.setString("login", emailContr.text);
+                  await preferences.setString("password", passContr.text);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => BottomNavBar()));
                 },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ssp_prom/customs/colors.dart';
 import 'package:ssp_prom/customs/strings.dart';
 import 'package:ssp_prom/screens/simSellScreens/findNumScreen.dart';
@@ -51,7 +52,10 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
                         ),
                       ],
                     ),
-                    Container(
+                    InkWell(
+                      onTap: () {
+                        clearDataFromPrefs();
+                      },
                       child: Text(
                         "ПРОФИЛЬ",
                         style: TextStyle(
@@ -117,5 +121,11 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
         ],
       ),
     );
+  }
+
+  void clearDataFromPrefs() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.remove("login");
+    await pref.remove("password");
   }
 }
