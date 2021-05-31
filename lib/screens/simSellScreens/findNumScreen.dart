@@ -23,7 +23,7 @@ class _FindNumScreenState extends State<FindNumScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 60,
+                height: 50,
               ),
               Row(
                 children: [
