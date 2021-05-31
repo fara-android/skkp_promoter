@@ -81,9 +81,6 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               TextFormField(
                 controller: passContr,
-                // onChanged: (p) {
-                //   passWord = p;
-                // },
                 obscureText: true,
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(

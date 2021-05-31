@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ssp_prom/customs/strings.dart';
+import 'package:ssp_prom/screens/simSellScreens/tariffSelectionScreen.dart';
 
 class FindNumScreen extends StatefulWidget {
   FindNumScreen({Key key}) : super(key: key);
@@ -9,6 +11,7 @@ class FindNumScreen extends StatefulWidget {
 }
 
 class _FindNumScreenState extends State<FindNumScreen> {
+  TextEditingController numController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +23,7 @@ class _FindNumScreenState extends State<FindNumScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 80,
+                height: 60,
               ),
               Row(
                 children: [
@@ -53,7 +56,12 @@ class _FindNumScreenState extends State<FindNumScreen> {
                   ),
                 ),
               ),
+              SizedBox(height: 4),
               TextField(
+                inputFormatters: [
+                  new LengthLimitingTextInputFormatter(12)
+                ],
+                controller: numController,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -77,23 +85,46 @@ class _FindNumScreenState extends State<FindNumScreen> {
               SizedBox(
                 height: 40,
               ),
-              Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.green),
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  searchNumber,
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TariffSelectionScreen(
+                                getNumText: numController.text,
+                              )));
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.green),
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(16),
+                  child: Text(
+                    searchNumber,
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 39,
               ),
-              Row(
-                children: [],
+              InkWell(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.qr_code_scanner_sharp,
+                      color: Colors.green,
+                    ),
+                    SizedBox(width: 29),
+                    Text(
+                      scanQRText,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
