@@ -13,3 +13,5 @@ String referenceInfoText = "Справочная информация";
 String bottomMainText = "Главная";
 String bottomControlText = "Управление";
 String bottomSettingsText = "Настройки";
+String promptTextMSISDN = "Введите MSISDN";
+String searchNumber = "НАЙТИ НОМЕР";
