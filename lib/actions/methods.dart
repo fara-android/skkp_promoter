@@ -14,7 +14,7 @@ Widget buildInfoContainer(String image, String numText, String period) {
           ),
         ],
         borderRadius: BorderRadius.circular(16)),
-    width: 110,
+    width: 115,
     padding: EdgeInsets.all(12),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +43,7 @@ Widget buildAllTarrifs(int index) {
   return Column(
     children: [
       Container(
-        padding: EdgeInsets.only(right: 16,left: 16),
+        padding: EdgeInsets.only(right: 16, left: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -51,7 +51,7 @@ Widget buildAllTarrifs(int index) {
               list.listOfTarrifs[index].tariffName,
               style: TextStyle(color: Colors.black, fontSize: 16),
             ),
-           IconButton(icon:  Icon(Icons.arrow_forward_ios), onPressed: (){})
+            IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: () {})
           ],
         ),
       ),
@@ -65,7 +65,10 @@ Widget buildAllTarrifs(int index) {
           scrollDirection: Axis.horizontal,
           children: [
             Container(
-              padding: EdgeInsets.only(top: 8, bottom: 8, ),
+              padding: EdgeInsets.only(
+                top: 8,
+                bottom: 8,
+              ),
               child: buildInfoContainer("assets/images/payment.png",
                   list.listOfTarrifs[index].price.toString(), "с/мес"),
             ),
@@ -100,7 +103,10 @@ Widget buildAllTarrifs(int index) {
         ),
       ),
       SizedBox(height: 20),
-      Container(height: 0.2,color:Colors.black,)
+      Container(
+        height: 0.2,
+        color: Colors.black,
+      )
     ],
   );
 }
