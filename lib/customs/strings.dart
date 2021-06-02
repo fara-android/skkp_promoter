@@ -21,3 +21,4 @@ String numInActiveText = "НОМЕР НЕАКТИВНЫЙ";
 String currentTarrifText = "Тариф на SIM-карте: ";
 String weekText = "/нед";
 String monthText = "/мес";
+String availableText = "Доступные тарифы";
