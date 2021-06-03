@@ -68,7 +68,7 @@ class _TariffSuccesConectedScreenState
                               )));
                 },
                 child: Container(
-                  padding: EdgeInsets.only(right: 16, left: 16),
+                  padding: EdgeInsets.only(right: 16, left: 16,bottom: 20),
                   child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -83,6 +83,7 @@ class _TariffSuccesConectedScreenState
                   ),
                 ),
               ),
+              
             ],
           ),
         ),

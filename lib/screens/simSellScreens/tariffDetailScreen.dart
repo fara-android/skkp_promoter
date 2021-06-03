@@ -4,6 +4,7 @@ import 'package:ssp_prom/customs/colors.dart';
 import 'package:ssp_prom/customs/strings.dart';
 import 'package:ssp_prom/models/tariffList.dart';
 import 'package:ssp_prom/screens/simSellScreens/tariffSuccesConectedScreen.dart';
+import 'package:ssp_prom/screens/simSellScreens/unSuccesConectedScreen.dart';
 
 class TarifDetailScreen extends StatefulWidget {
   String getNum;
@@ -15,6 +16,7 @@ class TarifDetailScreen extends StatefulWidget {
 }
 
 class _TarifDetailScreenState extends State<TarifDetailScreen> {
+  bool response = true;
   TarrifList list = new TarrifList();
   @override
   Widget build(BuildContext context) {
@@ -236,12 +238,20 @@ class _TarifDetailScreenState extends State<TarifDetailScreen> {
                     SizedBox(width: MediaQuery.of(context).size.width / 28),
                     TextButton(
                       onPressed: () {
-                        _callNumber();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    TariffSuccesConectedScreen()));
+                        // _callNumber();
+                        if (response == true) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      TariffSuccesConectedScreen()));
+                        } else {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      UnSuccesConectedScreen()));
+                        }
                       },
                       child: Container(
                         padding: EdgeInsets.only(
@@ -259,8 +269,8 @@ class _TarifDetailScreenState extends State<TarifDetailScreen> {
           );
         });
   }
-  _callNumber() async{
-  const number = '+996501331113'; //set the number here
-  bool res = await FlutterPhoneDirectCaller.directCall(number);
-}
+//   _callNumber() async{
+//   const number = '+996501331113'; //set the number here
+//   bool res = await FlutterPhoneDirectCaller.directCall(number);
+// }
 }

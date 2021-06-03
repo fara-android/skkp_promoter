@@ -38,7 +38,7 @@ class _UnSuccesConectedScreenState extends State<UnSuccesConectedScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: Image.asset(
-                      "assets/images/vectorOk.png",
+                      "assets/images/error.png",
                       width: 78,
                       height: 58,
                     ),
@@ -47,7 +47,7 @@ class _UnSuccesConectedScreenState extends State<UnSuccesConectedScreen> {
                     height: 36,
                   ),
                   Text(
-                    "Тариф усешно подключен",
+                    "Текст Ошибки",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -65,7 +65,7 @@ class _UnSuccesConectedScreenState extends State<UnSuccesConectedScreen> {
                               )));
                 },
                 child: Container(
-                  padding: EdgeInsets.only(right: 16, left: 16),
+                  padding: EdgeInsets.only(right: 16, left: 16,bottom: 20),
                   child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
