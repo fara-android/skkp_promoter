@@ -26,3 +26,4 @@ String tariffDefinition =
     "Описание тарифа текст супер интернет бесплатно но если скачаешь себе приложение МЕГА USSD";
 String connectTarifText = "Подключить ТАРИФ";
 String tarifConnectCallText = "*342*123124412*123412*23#";
+String continueText = "ПРОДОЛЖИТЬ";
