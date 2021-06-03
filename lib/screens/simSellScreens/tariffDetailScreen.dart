@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ssp_prom/customs/colors.dart';
 import 'package:ssp_prom/customs/strings.dart';
 import 'package:ssp_prom/models/tariffList.dart';
+import 'package:ssp_prom/screens/simSellScreens/tariffSuccesConectedScreen.dart';
 
 class TarifDetailScreen extends StatefulWidget {
   String getNum;
@@ -56,7 +57,13 @@ class _TarifDetailScreenState extends State<TarifDetailScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    TariffSuccesConectedScreen()));
+                      },
                       child: Container(
                         padding: EdgeInsets.only(right: 18, bottom: 0),
                         child: Text("ПОТВЕРДИТЬ",
