@@ -128,7 +128,7 @@ class _TariffSelectionScreenState extends State<TariffSelectionScreen> {
                       ),
                       SizedBox(height: 28),
                       for(int i = 0;i <list.listOfTarrifs.length;i++)
-                      buildAllTarrifs(i),
+                      buildAllTarrifs(i,context,widget.getNumText),
                     ],
                   ),
                 ),

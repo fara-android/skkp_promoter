@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ssp_prom/models/tariffList.dart';
+import 'package:ssp_prom/screens/simSellScreens/tariffDetailScreen.dart';
 
 Widget buildInfoContainer(String image, String numText, String period) {
   return Container(
@@ -38,7 +39,7 @@ Widget buildInfoContainer(String image, String numText, String period) {
   );
 }
 
-Widget buildAllTarrifs(int index) {
+Widget buildAllTarrifs(int index, BuildContext context, String telNum) {
   TarrifList list = new TarrifList();
   return Column(
     children: [
@@ -51,12 +52,19 @@ Widget buildAllTarrifs(int index) {
               list.listOfTarrifs[index].tariffName,
               style: TextStyle(color: Colors.black, fontSize: 16),
             ),
-            IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: () {})
+            IconButton(
+                icon: Icon(Icons.arrow_forward_ios),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TarifDetailScreen(
+                                index: index,
+                                getNum: telNum,
+                              )));
+                })
           ],
         ),
-      ),
-      SizedBox(
-        height: 8,
       ),
       Container(
         padding: EdgeInsets.only(left: 16),
@@ -98,11 +106,10 @@ Widget buildAllTarrifs(int index) {
               child: buildInfoContainer("assets/images/Sms1.png",
                   list.listOfTarrifs[index].sms.toString(), "нед"),
             ),
-            SizedBox(width: 20),
           ],
         ),
       ),
-      SizedBox(height: 20),
+      SizedBox(height: 14),
       Container(
         height: 0.2,
         color: Colors.black,
