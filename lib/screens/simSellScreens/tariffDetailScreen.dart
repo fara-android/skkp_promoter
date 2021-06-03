@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:ssp_prom/customs/colors.dart';
 import 'package:ssp_prom/customs/strings.dart';
 import 'package:ssp_prom/models/tariffList.dart';
@@ -14,71 +15,6 @@ class TarifDetailScreen extends StatefulWidget {
 }
 
 class _TarifDetailScreenState extends State<TarifDetailScreen> {
-  createConnectionTarifPopUp(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text(
-              "Подключение тарифа",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.green),
-            ),
-            content: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text("Подтвердите правильность выбранного тарифа и номера"),
-                  SizedBox(),
-                ],
-              ),
-            ),
-            actions: <Widget>[
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "ОТМЕНА",
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14,
-                              color: Colors.black),
-                        ),
-                        padding: EdgeInsets.only(right: 32, bottom: 0),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    TariffSuccesConectedScreen()));
-                      },
-                      child: Container(
-                        padding: EdgeInsets.only(right: 18, bottom: 0),
-                        child: Text("ПОТВЕРДИТЬ",
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.green)),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          );
-        });
-  }
-
   TarrifList list = new TarrifList();
   @override
   Widget build(BuildContext context) {
@@ -112,10 +48,11 @@ class _TarifDetailScreenState extends State<TarifDetailScreen> {
                 ],
               ),
               SizedBox(
-                height: mediaQ / 50,
+                height: mediaQ / 40,
               ),
               Container(
-                padding: EdgeInsets.only(right: 140),
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.only(left: 16),
                 child: Text(
                   list.listOfTarrifs[widget.index].tariffName,
                   style: TextStyle(
@@ -224,7 +161,7 @@ class _TarifDetailScreenState extends State<TarifDetailScreen> {
 
   Widget createContainerDetail(String images, String numText, String period) {
     return Container(
-      width: MediaQuery.of(context).size.width / 2.35,
+      width: MediaQuery.of(context).size.width / 2.25,
       padding: EdgeInsets.all(18),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
@@ -254,4 +191,76 @@ class _TarifDetailScreenState extends State<TarifDetailScreen> {
       ),
     );
   }
+
+  createConnectionTarifPopUp(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              "Подключение тарифа",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.green),
+            ),
+            content: Container(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Подтвердите правильность выбранного тарифа и номера"),
+                  SizedBox(),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "ОТМЕНА",
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14,
+                              color: Colors.black),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width / 28),
+                    TextButton(
+                      onPressed: () {
+                        _callNumber();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    TariffSuccesConectedScreen()));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          right: 18,
+                        ),
+                        child: Text("ПОТВЕРДИТЬ",
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.green)),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          );
+        });
+  }
+  _callNumber() async{
+  const number = '+996501331113'; //set the number here
+  bool res = await FlutterPhoneDirectCaller.directCall(number);
+}
 }
